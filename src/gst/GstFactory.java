@@ -14,7 +14,7 @@ public class GstFactory {
     String[] slabFourCommodityList = { "CREAM", "PERFUME", "LOTION" }; // 28% GST
     // Method for deciding the classes
 
-    public GstAllSlabs decideSlab(String[] splitInput) {
+    public  GstSlab decideSlab(String[] splitInput) {
         String commodity = splitInput[1].toUpperCase(); // Provided Commodity
         if (Arrays.asList(slabOneCommodityList).contains(commodity)) {
             return new SlabOneGST(splitInput);

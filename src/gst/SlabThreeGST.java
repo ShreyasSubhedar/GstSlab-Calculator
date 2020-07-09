@@ -4,7 +4,7 @@ package gst;
 This class implements GstAllSlabs interface and defines the GST rate for slab3 commodities and calculates
 the final price of the commodity.
 */
-public class SlabThreeGST implements GstAllSlabs {
+public class SlabThreeGST implements GstSlab {
     int unit;
     double initialUnitPrice;
     double slab3GST = 0.18; // GST rate for slab3
@@ -15,7 +15,7 @@ public class SlabThreeGST implements GstAllSlabs {
     }
 
     @Override
-    public double calculateGSTSlab() {
+    public double calculateGSTSlab(int unit, double initialUnitPrice) {
         // TODO Adding calculation logic for third slab
         return unit * (initialUnitPrice + (initialUnitPrice * slab3GST));
 

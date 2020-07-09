@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-import gst.GstAllSlabs;
 import gst.GstFactory;
+import gst.GstSlab;
 
 public class Commodity {
 
@@ -10,24 +10,26 @@ public class Commodity {
         String input = sc.nextLine();
         sc.close();
         String[] splitInput = input.split(" ");
+        int unit=Integer.parseInt(splitInput[0]);
+        double initialUnitPrice = Integer.parseInt(splitInput[2]);
         // Validating commodity unit
-        if (Integer.parseInt(splitInput[0]) <= 0) {
+        if (unit <= 0) {
             System.out.println("Invalid Unit given!!");
         }
         // Validating commodity price
-        else if (Integer.parseInt(splitInput[2]) <= 0) {
+        else if (initialUnitPrice <= 0) {
             System.out.println("Invalid Amount given!!");
         } 
         // calling Factory class
         else {
 
             GstFactory factory = new GstFactory();
-            GstAllSlabs allSlabs = factory.decideSlab(splitInput);
+            GstSlab allSlabs = factory.decideSlab(splitInput);
             try {
-                double finalPrice = allSlabs.calculateGSTSlab();
-                System.out.println(finalPrice);
+                double finalPrice = allSlabs.calculateGSTSlab(unit,initialUnitPrice);
+                System.out.println("Final Price : "+finalPrice);
             } catch (NullPointerException e) {
-                System.out.println("Sorry Commodity not found!!");
+                System.out.println("Sorry Commodity is not avaialable!!");
             }
 
         }
